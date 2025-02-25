@@ -54,7 +54,7 @@ export class CounterApp extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-primary);
+        color: var(--counter-color, var(--ddd-theme-primary));
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
@@ -83,7 +83,13 @@ export class CounterApp extends DDDSuper(I18NMixin(LitElement)) {
 updated(changedProperties) {
   super.updated(changedProperties);
   if (changedProperties.has("count")) {
-    console.log("count changed to: ", this.count);
+    if (this.count == this.max || this.count == this.min)
+    {
+      this.style.setProperty('--counter-color', 'var(--ddd-theme-default-athertonViolet)');
+    }
+    else {
+      this.style.setProperty('var(--ddd-theme-default-primary)');
+    }
     if (this.count === 21) {
       this.makeItRain();
     }
