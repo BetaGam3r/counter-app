@@ -59,7 +59,7 @@ export class CounterApp extends DDDSuper(I18NMixin(LitElement)) {
         font-family: var(--ddd-font-navigation);
       }
       :host([count="18"]) {
-        color: var(--ddd-theme-default-athertonViolet);
+        color: var(--ddd-theme-default-wonderPurple);
       }
       :host([count="21"]) {
         color: var(--ddd-theme-default-wonderPurple);
@@ -83,16 +83,16 @@ export class CounterApp extends DDDSuper(I18NMixin(LitElement)) {
 updated(changedProperties) {
   super.updated(changedProperties);
   if (changedProperties.has("count")) {
-    if (this.count == this.max || this.count == this.min)
-    {
-      this.style.setProperty('--counter-color', 'var(--ddd-theme-default-athertonViolet)');
-    }
-    else {
-      this.style.setProperty('var(--ddd-theme-default-primary)');
-    }
     if (this.count === 21) {
       this.makeItRain();
     }
+    if (this.count == this.max || this.count == this.min)
+      {
+        this.style.setProperty('--counter-color', 'var(--ddd-theme-default-athertonViolet)');
+      }
+      else {
+        this.style.setProperty('var(--ddd-theme-default-primary)');
+      }
   }
 }
 
